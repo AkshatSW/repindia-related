@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ title }}</title>
+<title>{% block title %}HYD Airport Run 2026{% endblock %}</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -15,24 +15,54 @@ body {
     color:#0f172a;
 }
 
+/* ================= NAVBAR ================= */
+
 nav {
     background:#0f172a;
     padding:15px 40px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    position:relative;
+}
+
+.logo {
+    color:white;
+    font-weight:700;
+    font-size:18px;
+}
+
+.nav-links {
+    display:flex;
+    gap:25px;
 }
 
 nav a {
     color:white;
     text-decoration:none;
-    margin-left:20px;
     font-weight:500;
 }
 
 nav a:hover {
     opacity:0.8;
 }
+
+/* Hamburger */
+.menu-toggle {
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    gap:5px;
+}
+
+.menu-toggle span {
+    width:25px;
+    height:3px;
+    background:white;
+    border-radius:3px;
+}
+
+/* ================= LAYOUT ================= */
 
 .container {
     max-width:1200px;
@@ -78,41 +108,86 @@ nav a:hover {
     margin-top:8px;
 }
 
-.upload-btn {
-    margin-top:15px;
-    padding:8px 15px;
-    background:#1e40af;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-}
+/* ================= MOBILE ================= */
 
-.upload-btn:hover {
-    background:#2563eb;
-}
+@media (max-width: 768px) {
 
-img {
-    max-width:100%;
-    border-radius:12px;
-    margin-top:15px;
+    nav {
+        padding:15px 20px;
+    }
+
+    .menu-toggle {
+        display:flex;
+    }
+
+    .nav-links {
+        position:absolute;
+        top:60px;
+        left:0;
+        width:100%;
+        background:#0f172a;
+        flex-direction:column;
+        align-items:center;
+        gap:15px;
+        padding:20px 0;
+        display:none;
+    }
+
+    .nav-links.active {
+        display:flex;
+    }
+
+    .container {
+        padding:40px 20px;
+    }
+
+    .metric-grid {
+        flex-direction:column;
+    }
+
+    .section-title {
+        font-size:24px;
+    }
 }
 </style>
+
+{% block extra_head %}{% endblock %}
 </head>
 <body>
 
+<!-- ================= NAVBAR ================= -->
+
 <nav>
-    <div style="color:white;font-weight:700;">HYD Airport Run 2026</div>
-    <div>
-        <a href="/">Home</a>
-        <a href="/proactive">Proactive</a>
-        <a href="/performance">Performance</a>
+    <div class="logo">HYD Airport Run 2026</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('proactive') }}">Proactive</a>
+        <a href="{{ url_for('performance') }}">Performance</a>
     </div>
 </nav>
 
+<!-- ================= PAGE CONTENT ================= -->
+
 <div class="container">
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 </div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+{% block extra_scripts %}{% endblock %}
 
 </body>
 </html>
