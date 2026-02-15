@@ -1,45 +1,245 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>HYD Airport Run 2026 Dashboard</title>
+{% extends "base.html" %}
+{% block content %}
+
 <style>
-body {
-    font-family: Inter, sans-serif;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
+.dashboard-container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.hero-card {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
-    display:flex;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    margin:0;
+    border-radius: 18px;
+    margin-bottom: 50px;
 }
-.container {
-    text-align:center;
+
+.hero-card h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
 }
-a {
-    display:block;
-    margin:20px;
-    padding:15px 30px;
-    background:#1e40af;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:600;
+
+.hero-card p {
+    opacity: 0.85;
+    font-size: 16px;
 }
-a:hover {
-    background:#2563eb;
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.kpi-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+}
+
+.kpi-card h3 {
+    font-size: 28px;
+    margin: 0;
+    color: #0f172a;
+}
+
+.kpi-card p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2563eb;
+    padding-left: 12px;
+}
+
+.content-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+ul {
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+@media(max-width: 900px) {
+    .two-column {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
-</head>
-<body>
 
-<div class="container">
-    <h1>HYD Airport Run 2026</h1>
-    <h2>ORM & Engagement Dashboard</h2>
+<div class="dashboard-container">
 
-    <a href="/proactive">Proactive Engagement</a>
-    <a href="/performance">Performance Impact</a>
+<!-- HERO -->
+<div class="hero-card">
+    <h1>ORM & Engagement Dashboard</h1>
+    <p>Jan ‘25 – Jan ‘26 | Source: Locobuzz</p>
+    <p>Comprehensive overview of proactive engagement strategy and performance efficiency.</p>
 </div>
 
-</body>
-</html>
+<!-- KPI SECTION -->
+<div class="kpi-grid">
+    <div class="kpi-card"><h3>163.3K+</h3><p>Mentions</p></div>
+    <div class="kpi-card"><h3>30.1K</h3><p>Tickets</p></div>
+    <div class="kpi-card"><h3>78</h3><p>Reports</p></div>
+    <div class="kpi-card"><h3>3 min</h3><p>Average TAT</p></div>
+    <div class="kpi-card"><h3>74+</h3><p>Sentiment Conversions</p></div>
+    <div class="kpi-card"><h3>99%</h3><p>Favourable Sentiment</p></div>
+    <div class="kpi-card"><h3>10K</h3><p>Influencers Tracked</p></div>
+    <div class="kpi-card"><h3>400+</h3><p>Response Improvisations</p></div>
+</div>
+
+<!-- SUMMARY -->
+<div class="section">
+    <div class="section-title">Summary of Work Done</div>
+    <div class="content-card">
+        <ul>
+            <li>Social Listening</li>
+            <li>Proactive Engagement</li>
+            <li>Response & Escalation Management</li>
+            <li>Reporting & Insights</li>
+        </ul>
+    </div>
+</div>
+
+<!-- OPERATIONAL OVERVIEW -->
+<div class="section">
+    <div class="section-title">Operational Overview</div>
+    <div class="two-column">
+        <div class="content-card">
+            <h4>Listening & Monitoring</h4>
+            <ul>
+                <li>Tool-based + manual monitoring.</li>
+                <li>Manual checks every 2 hours.</li>
+                <li>30+ keyword tracking.</li>
+            </ul>
+
+            <h4>Reporting</h4>
+            <ul>
+                <li>78+ reports/month.</li>
+                <li>Daily dashboard & weekly deep dive.</li>
+                <li>Playbook updated weekly.</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h4>Proactive Engagement</h4>
+            <ul>
+                <li>197 proactive engagements.</li>
+                <li>93+ closure responses.</li>
+                <li>54+ sentiment conversions.</li>
+            </ul>
+
+            <h4>Portal Monitoring</h4>
+            <ul>
+                <li>CPGRAMS & AirSewa managed.</li>
+                <li>High-sensitivity monitoring protocols.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SENTIMENT -->
+<div class="section">
+    <div class="section-title">Airport Mentions – Sentiment Analysis</div>
+    <div class="content-card">
+        <ul>
+            <li>October: 12.99% positive mentions.</li>
+            <li>July peak: 21.9% positive sentiment.</li>
+            <li>Negative mentions remained below 1.5% throughout.</li>
+            <li>Neutral sentiment dominated (>75%).</li>
+        </ul>
+    </div>
+</div>
+
+<!-- PAIN POINTS -->
+<div class="section">
+    <div class="section-title">Key Pain Points</div>
+    <div class="two-column">
+        <div class="content-card">
+            <ul>
+                <li>TOPS – Immigration queues & buggy gaps.</li>
+                <li>Security – CISF & festive congestion.</li>
+                <li>GTD – Fastag & parking coordination.</li>
+            </ul>
+        </div>
+        <div class="content-card">
+            <ul>
+                <li>IT – DigiYatra, FIDS & Wi-Fi reliability.</li>
+                <li>CFL – Washroom hygiene concerns.</li>
+                <li>Non-Aero – Parking & vending complaints.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- POSITIVES -->
+<div class="section">
+    <div class="section-title">Top Positive Mentions</div>
+    <div class="content-card">
+        <ul>
+            <li>Google Ratings – 5,813</li>
+            <li>#ShotAtHYDAirport – 3,642</li>
+            <li>Overall Experience – 1,929</li>
+            <li>Brand Engagement – 339</li>
+            <li>CFL Appreciation – 245</li>
+        </ul>
+    </div>
+</div>
+
+<!-- TAT -->
+<div class="section">
+    <div class="section-title">TAT Performance Overview</div>
+    <div class="content-card">
+        <ul>
+            <li>90%+ responses within 5 mins (Jan–Apr).</li>
+            <li>July best performance: 75% within 2 mins.</li>
+            <li>95% cases within 5 mins post-May.</li>
+            <li>Less than 2% exceeded 10 mins.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- WAY FORWARD -->
+<div class="section">
+    <div class="section-title">Way Forward</div>
+    <div class="content-card">
+        <ul>
+            <li>Influencer advocacy expansion.</li>
+            <li>Power BI dashboard implementation.</li>
+            <li>Enhanced internal coordination.</li>
+            <li>UGC leverage on YouTube.</li>
+            <li>Improved manual keyword scanning.</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

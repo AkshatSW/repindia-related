@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -18,17 +17,20 @@ def home():
 
 @app.route("/proactive", methods=["GET", "POST"])
 def proactive():
+    upload_path = app.config['UPLOAD_FOLDER']
+    existing_images = os.listdir(upload_path)
+
     if request.method == "POST":
         file = request.files.get("image")
         slide = request.form.get("slide")
 
         if file and slide:
             filename = f"{slide}.png"
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(upload_path, filename))
 
         return redirect(url_for("proactive"))
 
-    return render_template("proactive.html")
+    return render_template("proactive.html", images=existing_images)
 
 
 @app.route("/performance")

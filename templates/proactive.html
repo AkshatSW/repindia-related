@@ -1,82 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Proactive Engagement</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+{% extends "base.html" %}
+{% block content %}
 
-<style>
-body {
-    font-family: Inter, sans-serif;
-    margin:0;
-    background:#f1f5f9;
-}
+<h1 class="section-title">Proactive Engagement Highlights</h1>
 
-.slide {
-    padding:60px 80px;
-}
+{% set influencers = [
+("slide1","Sourabh Bakshi","106,748 Followers"),
+("slide2","iSatyam100","25,134 Followers"),
+("slide3","easwar_graphics","35,659 Followers"),
+("slide4","Vershasingh26","16,346 Followers")
+] %}
 
-.container {
-    display:flex;
-    gap:40px;
-}
+{% for slide,name,followers in influencers %}
 
-.left { flex:1; }
-.right {
-    flex:1.2;
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-}
+<div class="card" style="margin-bottom:40px;">
+    <h2>{{ name }}</h2>
+    <p style="color:#64748b;">{{ followers }}</p>
 
-img {
-    max-width:100%;
-    border-radius:10px;
-    margin-top:15px;
-}
+    {% if slide + ".png" not in images %}
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="slide" value="{{ slide }}">
+        <input type="file" name="image" required>
+        <button class="upload-btn">Upload Screenshot</button>
+    </form>
+    {% endif %}
 
-.upload-btn {
-    margin-top:15px;
-}
-</style>
-</head>
-<body>
+    {% if slide + ".png" in images %}
+        <img src="{{ url_for('static', filename='uploads/' + slide + '.png') }}">
+    {% endif %}
 
-<h1 style="text-align:center;margin-top:30px;">
-Proactive Engagement – HYD Airport Run 2026
-</h1>
-
-{% for slide in ["slide1","slide2","slide3","slide4"] %}
-<section class="slide">
-<div class="container">
-    <div class="left">
-
-        {% if not (slide + ".png") in os.listdir('static/uploads') %}
-        <form method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="slide" value="{{ slide }}">
-            <input type="file" name="image" required>
-            <button type="submit" class="upload-btn">Upload Screenshot</button>
-        </form>
-        {% endif %}
-
-        {% if (slide + ".png") in os.listdir('static/uploads') %}
-            <img src="{{ url_for('static', filename='uploads/' + slide + '.png') }}">
-        {% endif %}
-
-    </div>
-
-    <div class="right">
-        <ul>
-            <li>Influencer engagement amplified community narrative.</li>
-            <li>Live event visibility increased digital reach.</li>
-            <li>Strengthened experiential positioning.</li>
-            <li>Enhanced post-event advocacy impact.</li>
-        </ul>
-    </div>
+    <ul style="margin-top:20px; line-height:1.8;">
+        <li>Amplified emotional community narrative.</li>
+        <li>Enhanced experiential positioning.</li>
+        <li>Strengthened post-event advocacy.</li>
+        <li>Improved digital engagement footprint.</li>
+    </ul>
 </div>
-</section>
+
 {% endfor %}
 
-</body>
-</html>
+{% endblock %}
