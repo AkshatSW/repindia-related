@@ -3,226 +3,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proactive Engagement Efforts | HYD Airport Run 2026</title>
+<title>GHIAL | ORM Executive Report 2025</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #f1f5f9;
-    color: #0f172a;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Inter',sans-serif;
+    background:#f4f8fc;
+    color:#0b2a4a;
+    scroll-behavior:smooth;
 }
 
-.slide {
-    min-height: 100vh;
-    padding: 70px 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
+.container{width:90%;max-width:1200px;margin:auto}
+
+header{
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+}
+.logo-group{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+.logo-group img{
+    height:45px;
 }
 
-.title-slide {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-    text-align: center;
+nav a{
+    text-decoration:none;
+    color:#0b2a4a;
+    font-weight:500;
+    margin-left:25px;
+    font-size:14px;
+}
+nav a:hover{color:#0072ce}
+
+.hero{
+    background:linear-gradient(135deg,#0072ce,#003b73);
+    color:white;
+    padding:100px 0;
+    text-align:center;
+}
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+.hero p{
+    font-size:18px;
+    opacity:0.95;
 }
 
-.title-slide h1 {
-    font-size: 48px;
+.section{padding:80px 0}
+.section.white{background:white}
+
+h2{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:50px;
 }
 
-.title-slide h2 {
-    font-weight: 400;
-    opacity: 0.85;
+.kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+.kpi{
+    background:white;
+    padding:35px;
+    border-radius:10px;
+    box-shadow:0 6px 25px rgba(0,114,206,0.08);
+    text-align:center;
+    transition:0.3s;
+}
+.kpi:hover{transform:translateY(-6px)}
+
+.kpi span{
+    font-size:36px;
+    font-weight:700;
+    color:#0072ce;
 }
 
-h1 {
-    font-size: 34px;
-    margin-bottom: 25px;
+.kpi p{
+    margin-top:12px;
+    font-size:14px;
+    font-weight:500;
 }
 
-.container {
-    display: flex;
-    gap: 50px;
+.two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
 }
 
-.left {
-    flex: 1;
+.card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 6px 25px rgba(0,114,206,0.08);
 }
 
-.right {
-    flex: 1.2;
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+.card h4{
+    color:#0072ce;
+    margin-bottom:15px;
 }
 
-.followers {
-    background: #e0f2fe;
-    color: #0369a1;
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-weight: 600;
-    margin-bottom: 20px;
+ul{padding-left:20px;line-height:1.8}
+
+canvas{
+    max-width:850px;
+    margin:40px auto;
+    display:block;
 }
 
-ul {
-    line-height: 1.7;
+footer{
+    background:#003b73;
+    color:white;
+    text-align:center;
+    padding:40px 0;
+    font-size:13px;
 }
 
-.upload-section {
-    margin-top: 20px;
-}
-
-.preview img {
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    margin-top: 15px;
-}
-
-.footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #64748b;
+@media(max-width:768px){
+    .two-col{grid-template-columns:1fr}
+    .hero h1{font-size:30px}
 }
 </style>
 </head>
+
 <body>
 
-<section class="slide title-slide">
-    <h1>Proactive Engagement Efforts</h1>
-    <h2>HYD Airport Run 2026 | Influencer Engagement Highlights</h2>
+<header>
+<div class="container navbar">
+    <div class="logo-group">
+        <!-- GMR / GHIAL Reference Logo -->
+        <img src="https://www.futuretravelexperience.com/company/gmr-hyderabad-international-airport-limited/logo.png" alt="GMR Hyderabad International Airport Limited Logo">
+        
+        <!-- RepIndia Official SVG -->
+        <img src="https://www.repindia.com/wp-content/themes/repindia/assets/images/logo.svg" alt="RepIndia Logo">
+    </div>
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#performance">Performance</a>
+        <a href="#engagement">Engagement</a>
+        <a href="#crisis">Crisis</a>
+        <a href="#painpoints">Pain Points</a>
+        <a href="#wayforward">Way Forward</a>
+    </nav>
+</div>
+</header>
+
+<section class="hero">
+    <h1>Online Reputation Management</h1>
+    <p>Executive Performance Report | Jan 2025 – Oct 2025</p>
+    <p>Monitoring Source: Locobuzz</p>
 </section>
 
-<!-- Slide Template -->
-<section class="slide">
-    <h1>Sourabh Bakshi – Amplified Community Narrative</h1>
-    <div class="container">
-        <div class="left">
-            <div class="followers">106,748 Followers</div>
-            <div class="upload-section" id="upload1">
-                <strong>Upload Screenshot:</strong><br>
-                <input type="file" accept="image/*" onchange="previewImage(event, 'img1', 'upload1')">
-            </div>
-            <div class="preview">
-                <img id="img1">
-            </div>
-        </div>
-        <div class="right">
-            <ul>
-                <li>Framed the event as a celebration of strength and unity.</li>
-                <li>Highlighted live atmosphere and city pride.</li>
-                <li>Real-time engagement aligned with emotional narrative.</li>
-                <li>Strengthened RGIA’s community-driven positioning.</li>
-            </ul>
-        </div>
-    </div>
+<section id="overview" class="section">
+<div class="container">
+<h2>Executive KPI Overview</h2>
+<div class="kpi-grid">
+<div class="kpi"><span>163.3K+</span><p>Total Mentions</p></div>
+<div class="kpi"><span>30.1K</span><p>Tickets Managed</p></div>
+<div class="kpi"><span>78</span><p>Reports Delivered</p></div>
+<div class="kpi"><span>3 Min</span><p>Average TAT</p></div>
+<div class="kpi"><span>99%</span><p>Favourable Sentiment</p></div>
+<div class="kpi"><span>74+</span><p>Sentiment Conversions</p></div>
+</div>
+</div>
 </section>
 
-<section class="slide">
-    <h1>iSatyam100 – On-Ground Energy Spotlight</h1>
-    <div class="container">
-        <div class="left">
-            <div class="followers">25,134 Followers</div>
-            <div class="upload-section" id="upload2">
-                <input type="file" accept="image/*" onchange="previewImage(event, 'img2', 'upload2')">
-            </div>
-            <div class="preview">
-                <img id="img2">
-            </div>
-        </div>
-        <div class="right">
-            <ul>
-                <li>Captured authentic live-event excitement.</li>
-                <li>Emphasized crowd passion and pride.</li>
-                <li>Amplified event visibility through engagement.</li>
-                <li>Enhanced experiential brand perception.</li>
-            </ul>
-        </div>
-    </div>
+<section id="performance" class="section white">
+<div class="container">
+<h2>Sentiment & TAT Performance</h2>
+<canvas id="sentimentChart"></canvas>
+<canvas id="tatChart"></canvas>
+</div>
 </section>
 
-<section class="slide">
-    <h1>easwar_graphics – Festival Positioning</h1>
-    <div class="container">
-        <div class="left">
-            <div class="followers">35,659 Followers</div>
-            <div class="upload-section" id="upload3">
-                <input type="file" accept="image/*" onchange="previewImage(event, 'img3', 'upload3')">
-            </div>
-            <div class="preview">
-                <img id="img3">
-            </div>
-        </div>
-        <div class="right">
-            <ul>
-                <li>Positioned run as a festival of fitness and togetherness.</li>
-                <li>Elevated narrative beyond a sporting event.</li>
-                <li>Extended digital reach via engagement.</li>
-                <li>Reinforced experiential brand positioning.</li>
-            </ul>
-        </div>
-    </div>
+<section id="engagement" class="section">
+<div class="container">
+<h2>Proactive Engagement Highlights</h2>
+<div class="two-col">
+<div class="card">
+<h4>Influencer Amplification</h4>
+<ul>
+<li>Pat Cummins – 40.9% engagement rate</li>
+<li>Mahesh Babu – 13M+ followers</li>
+<li>Harsh Goenka – 2.1M+ followers</li>
+<li>Vishnu Som – ~1.2M views</li>
+</ul>
+</div>
+<div class="card">
+<h4>Pet Therapy Initiative</h4>
+<ul>
+<li>High UGC amplification</li>
+<li>Positive sentiment sustainment (~12%)</li>
+<li>Celebrity & lifestyle influencer traction</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 
-<section class="slide">
-    <h1>Vershasingh26 – Participant Spirit Highlight</h1>
-    <div class="container">
-        <div class="left">
-            <div class="followers">16,346 Followers</div>
-            <div class="upload-section" id="upload4">
-                <input type="file" accept="image/*" onchange="previewImage(event, 'img4', 'upload4')">
-            </div>
-            <div class="preview">
-                <img id="img4">
-            </div>
-        </div>
-        <div class="right">
-            <ul>
-                <li>Showcased enthusiasm and runner determination.</li>
-                <li>Strengthened emotional recall.</li>
-                <li>Supported post-event advocacy.</li>
-                <li>Maintained engagement momentum.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer">
-        HYD Airport Run 2026 | ORM & Proactive Engagement Strategy
-    </div>
+<section id="crisis" class="section white">
+<div class="container">
+<h2>Crisis & Real-Time Escalation</h2>
+<div class="card">
+<ul>
+<li>IndiGo congestion handled with official clarification</li>
+<li>10+ alerts escalated within 2 minutes</li>
+<li>Media coordination with ANI & HS Bawa</li>
+<li>Structured APOC protocol followed</li>
+</ul>
+</div>
+</div>
 </section>
+
+<section id="painpoints" class="section">
+<div class="container">
+<h2>Key Operational Pain Points</h2>
+<div class="two-col">
+<div class="card">
+<h4>Airport Services</h4>
+<ul>
+<li>Immigration queues</li>
+<li>Buggy availability</li>
+<li>DigiYatra reliability</li>
+<li>FIDS & Wi-Fi issues</li>
+</ul>
+</div>
+<div class="card">
+<h4>Stakeholder Concerns</h4>
+<ul>
+<li>Parking charges</li>
+<li>Baggage delays</li>
+<li>Cab driver behaviour</li>
+<li>Water bottle pricing</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="wayforward" class="section white">
+<div class="container">
+<h2>Strategic Way Forward</h2>
+<div class="kpi-grid">
+<div class="kpi"><span>Influencer Advocacy</span><p>Structured monthly amplification</p></div>
+<div class="kpi"><span>Power BI Integration</span><p>Full analytics deployment</p></div>
+<div class="kpi"><span>Internal Alignment</span><p>Faster sentiment conversion</p></div>
+<div class="kpi"><span>YouTube UGC</span><p>Brand leverage strategy</p></div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 GMR Hyderabad International Airport Limited. All rights reserved.</p>
+<p>© 2026 RepIndia Strategic Communications Pvt Ltd. All rights reserved.</p>
+<p>All trademarks belong to their respective owners. Internal reporting use only.</p>
+</footer>
 
 <script>
-function previewImage(event, imgId, uploadId) {
-    const reader = new FileReader();
-    reader.onload = function(){
-        const img = document.getElementById(imgId);
-        img.src = reader.result;
-        localStorage.setItem(imgId, reader.result);
-
-        // Hide upload section after upload
-        document.getElementById(uploadId).style.display = "none";
-    }
-    reader.readAsDataURL(event.target.files[0]);
+new Chart(document.getElementById('sentimentChart'),{
+type:'doughnut',
+data:{
+labels:['Positive','Neutral','Negative'],
+datasets:[{
+data:[15,83,2],
+backgroundColor:['#0072ce','#c9dff5','#e53935']
+}]
 }
+});
 
-window.onload = function() {
-    for(let i=1; i<=4; i++){
-        const saved = localStorage.getItem("img"+i);
-        if(saved){
-            document.getElementById("img"+i).src = saved;
-            document.getElementById("upload"+i).style.display = "none";
-        }
-    }
-}
+new Chart(document.getElementById('tatChart'),{
+type:'bar',
+data:{
+labels:['Within 2 mins','Within 5 mins','Over 10 mins'],
+datasets:[{
+data:[70,95,2],
+backgroundColor:['#0072ce','#5aa9e6','#e53935']
+}]
+},
+options:{scales:{y:{beginAtZero:true,max:100}}}
+});
 </script>
 
 </body>
 </html>
-
