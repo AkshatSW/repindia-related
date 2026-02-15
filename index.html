@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proactive Engagement Efforts | HYD Airport Run 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.slide {
+    min-height: 100vh;
+    padding: 70px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.title-slide {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    text-align: center;
+}
+
+.title-slide h1 {
+    font-size: 48px;
+}
+
+.title-slide h2 {
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+h1 {
+    font-size: 34px;
+    margin-bottom: 25px;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+}
+
+.left {
+    flex: 1;
+}
+
+.right {
+    flex: 1.2;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+.followers {
+    background: #e0f2fe;
+    color: #0369a1;
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+ul {
+    line-height: 1.7;
+}
+
+.upload-section {
+    margin-top: 20px;
+}
+
+.preview img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-top: 15px;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #64748b;
+}
+</style>
+</head>
+<body>
+
+<section class="slide title-slide">
+    <h1>Proactive Engagement Efforts</h1>
+    <h2>HYD Airport Run 2026 | Influencer Engagement Highlights</h2>
+</section>
+
+<!-- Slide Template -->
+<section class="slide">
+    <h1>Sourabh Bakshi – Amplified Community Narrative</h1>
+    <div class="container">
+        <div class="left">
+            <div class="followers">106,748 Followers</div>
+            <div class="upload-section" id="upload1">
+                <strong>Upload Screenshot:</strong><br>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'img1', 'upload1')">
+            </div>
+            <div class="preview">
+                <img id="img1">
+            </div>
+        </div>
+        <div class="right">
+            <ul>
+                <li>Framed the event as a celebration of strength and unity.</li>
+                <li>Highlighted live atmosphere and city pride.</li>
+                <li>Real-time engagement aligned with emotional narrative.</li>
+                <li>Strengthened RGIA’s community-driven positioning.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="slide">
+    <h1>iSatyam100 – On-Ground Energy Spotlight</h1>
+    <div class="container">
+        <div class="left">
+            <div class="followers">25,134 Followers</div>
+            <div class="upload-section" id="upload2">
+                <input type="file" accept="image/*" onchange="previewImage(event, 'img2', 'upload2')">
+            </div>
+            <div class="preview">
+                <img id="img2">
+            </div>
+        </div>
+        <div class="right">
+            <ul>
+                <li>Captured authentic live-event excitement.</li>
+                <li>Emphasized crowd passion and pride.</li>
+                <li>Amplified event visibility through engagement.</li>
+                <li>Enhanced experiential brand perception.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="slide">
+    <h1>easwar_graphics – Festival Positioning</h1>
+    <div class="container">
+        <div class="left">
+            <div class="followers">35,659 Followers</div>
+            <div class="upload-section" id="upload3">
+                <input type="file" accept="image/*" onchange="previewImage(event, 'img3', 'upload3')">
+            </div>
+            <div class="preview">
+                <img id="img3">
+            </div>
+        </div>
+        <div class="right">
+            <ul>
+                <li>Positioned run as a festival of fitness and togetherness.</li>
+                <li>Elevated narrative beyond a sporting event.</li>
+                <li>Extended digital reach via engagement.</li>
+                <li>Reinforced experiential brand positioning.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="slide">
+    <h1>Vershasingh26 – Participant Spirit Highlight</h1>
+    <div class="container">
+        <div class="left">
+            <div class="followers">16,346 Followers</div>
+            <div class="upload-section" id="upload4">
+                <input type="file" accept="image/*" onchange="previewImage(event, 'img4', 'upload4')">
+            </div>
+            <div class="preview">
+                <img id="img4">
+            </div>
+        </div>
+        <div class="right">
+            <ul>
+                <li>Showcased enthusiasm and runner determination.</li>
+                <li>Strengthened emotional recall.</li>
+                <li>Supported post-event advocacy.</li>
+                <li>Maintained engagement momentum.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        HYD Airport Run 2026 | ORM & Proactive Engagement Strategy
+    </div>
+</section>
+
+<script>
+function previewImage(event, imgId, uploadId) {
+    const reader = new FileReader();
+    reader.onload = function(){
+        const img = document.getElementById(imgId);
+        img.src = reader.result;
+        localStorage.setItem(imgId, reader.result);
+
+        // Hide upload section after upload
+        document.getElementById(uploadId).style.display = "none";
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+window.onload = function() {
+    for(let i=1; i<=4; i++){
+        const saved = localStorage.getItem("img"+i);
+        if(saved){
+            document.getElementById("img"+i).src = saved;
+            document.getElementById("upload"+i).style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
+
