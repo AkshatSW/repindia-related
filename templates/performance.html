@@ -4,8 +4,57 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 
-<h1 class="section-title">Performance Impact Overview</h1>
+<style>
+.metric-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:40px;
+}
 
+.metric {
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.06);
+    text-align:center;
+}
+
+.metric h3 {
+    font-size:15px;
+    color:#64748b;
+    margin-bottom:10px;
+}
+
+.metric p {
+    font-size:26px;
+    font-weight:600;
+    margin:0;
+    color:#0f172a;
+}
+
+.card {
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom:30px;
+}
+
+.section-subtitle {
+    font-size:14px;
+    color:#64748b;
+    margin-top:-10px;
+    margin-bottom:25px;
+}
+</style>
+
+<h1 class="section-title">Performance Impact Overview</h1>
+<p class="section-subtitle">
+Quantitative analysis of ORM performance impact, sentiment trends, and operational responsiveness.
+</p>
+
+<!-- KPI SUMMARY -->
 <div class="metric-grid">
     <div class="metric">
         <h3>2024 Negative Mentions</h3>
@@ -13,25 +62,49 @@
     </div>
     <div class="metric">
         <h3>2025 Negative Mentions</h3>
-        <p>980 (+69%)</p>
+        <p>980 <span style="color:#dc2626;">(+69%)</span></p>
     </div>
     <div class="metric">
-        <h3>Median TAT</h3>
+        <h3>Median TAT Improvement</h3>
         <p>15.43 → 11.38 mins</p>
+    </div>
+    <div class="metric">
+        <h3>Favourable Sentiment</h3>
+        <p>99%</p>
     </div>
 </div>
 
+<!-- NEGATIVE MENTIONS CHART -->
 <div class="card">
+    <h3>Negative Mention Volume Growth</h3>
     <canvas id="volumeChart"></canvas>
+    <p style="margin-top:20px;color:#64748b;">
+        Despite a 69% increase in negative mentions (580 → 980), overall favourable sentiment remained at 99%, reflecting effective containment and response mechanisms.
+    </p>
 </div>
 
-<div class="card" style="margin-top:30px;">
+<!-- TAT IMPROVEMENT CHART -->
+<div class="card">
+    <h3>Median Turnaround Time (TAT) Improvement</h3>
     <canvas id="tatChart"></canvas>
+    <p style="margin-top:20px;color:#64748b;">
+        Operational efficiency improved significantly, reducing median TAT from 15.43 minutes to 11.38 minutes — enhancing response velocity during higher mention volumes.
+    </p>
+</div>
+
+<!-- SENTIMENT STABILITY CHART -->
+<div class="card">
+    <h3>Sentiment Stability Overview</h3>
+    <canvas id="sentimentChart"></canvas>
+    <p style="margin-top:20px;color:#64748b;">
+        Positive sentiment peaked at 21.9% in July and remained stable at 12.99% in October, while negative sentiment stayed below 1.5% throughout the year.
+    </p>
 </div>
 
 <script>
 Chart.register(ChartDataLabels);
 
+/* NEGATIVE VOLUME */
 new Chart(document.getElementById("volumeChart"), {
     type:"bar",
     data:{
@@ -39,14 +112,26 @@ new Chart(document.getElementById("volumeChart"), {
         datasets:[{
             label:"Negative Mentions",
             data:[580,980],
-            backgroundColor:["#1e40af","#2563eb"]
+            backgroundColor:["#1e40af","#2563eb"],
+            borderRadius:8
         }]
     },
     options:{
-        plugins:{ datalabels:{ anchor:"end", align:"top" } }
+        plugins:{
+            legend:{ display:false },
+            datalabels:{
+                anchor:"end",
+                align:"top",
+                font:{weight:"bold"}
+            }
+        },
+        scales:{
+            y:{ beginAtZero:true }
+        }
     }
 });
 
+/* TAT */
 new Chart(document.getElementById("tatChart"), {
     type:"bar",
     data:{
@@ -54,11 +139,56 @@ new Chart(document.getElementById("tatChart"), {
         datasets:[{
             label:"Median TAT (Minutes)",
             data:[15.43,11.38],
-            backgroundColor:["#0f172a","#1e40af"]
+            backgroundColor:["#0f172a","#1e40af"],
+            borderRadius:8
         }]
     },
     options:{
-        plugins:{ datalabels:{ anchor:"end", align:"top" } }
+        plugins:{
+            legend:{ display:false },
+            datalabels:{
+                anchor:"end",
+                align:"top",
+                font:{weight:"bold"}
+            }
+        },
+        scales:{
+            y:{ beginAtZero:true }
+        }
+    }
+});
+
+/* SENTIMENT TREND */
+new Chart(document.getElementById("sentimentChart"), {
+    type:"line",
+    data:{
+        labels:["Feb","June","July","September","October"],
+        datasets:[
+        {
+            label:"Positive %",
+            data:[15,18,21.9,14,12.99],
+            borderColor:"#2563eb",
+            backgroundColor:"rgba(37,99,235,0.1)",
+            fill:true,
+            tension:0.3
+        },
+        {
+            label:"Negative %",
+            data:[0.77,1.1,1.2,1.48,1.2],
+            borderColor:"#dc2626",
+            backgroundColor:"rgba(220,38,38,0.08)",
+            fill:true,
+            tension:0.3
+        }]
+    },
+    options:{
+        plugins:{
+            legend:{ position:"top" },
+            datalabels:{ display:false }
+        },
+        scales:{
+            y:{ beginAtZero:true }
+        }
     }
 });
 </script>

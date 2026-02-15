@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Sentiment {{ page }} | HYD Airport Run 2026{% endblock %}
+
+{% block extra_head %}
+<style>
+
+/* ===== HEADER BANNER ===== */
+
+.sentiment-header {
+    background: #4b5563;
+    color: white;
+    padding: 40px;
+    border-radius: 0 0 40px 40px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.sentiment-subtitle {
+    text-align: center;
+    margin: 30px 0 50px;
+    font-size: 20px;
+    color: #1e293b;
+}
+
+/* ===== LAYOUT ===== */
+
+.sentiment-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* ===== SCREENSHOT BOX ===== */
+
+.screenshot-box {
+    border: 2px solid #6366f1;
+    border-radius: 12px;
+    padding: 15px;
+    background: white;
+}
+
+.screenshot-box img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* ===== UPLOAD BUTTON ===== */
+
+.upload-btn {
+    margin-top: 10px;
+}
+
+.upload-btn input {
+    display: none;
+}
+
+.upload-label {
+    background: #0f172a;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-block;
+}
+
+/* ===== EXPLANATION BOX ===== */
+
+.explanation-box {
+    border: 2px dotted #94a3b8;
+    padding: 25px;
+    background: #f8fafc;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 1024px) {
+    .sentiment-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="sentiment-header">
+    Sentiment Conversion
+</div>
+
+<div class="sentiment-subtitle">
+    Partnering with relevant teams to ensure every passenger concern is addressed efficiently and resolved to their satisfaction.
+</div>
+
+{% set img1 = 'sentiment_' + page|string + '_1.png' %}
+{% set img2 = 'sentiment_' + page|string + '_2.png' %}
+
+<div class="sentiment-layout">
+
+    <!-- LEFT: Initial Mention -->
+    <div>
+        <div class="screenshot-box">
+            {% if img1 in images %}
+                <img src="{{ url_for('static', filename='uploads/' + img1) }}">
+            {% else %}
+                Upload Initial Mention Screenshot
+            {% endif %}
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" class="upload-btn">
+            <input type="hidden" name="position" value="1">
+            <label class="upload-label">
+                Upload Screenshot
+                <input type="file" name="image" onchange="this.form.submit()">
+            </label>
+        </form>
+    </div>
+
+
+    <!-- CENTER: Response -->
+    <div>
+        <div class="screenshot-box">
+            {% if img2 in images %}
+                <img src="{{ url_for('static', filename='uploads/' + img2) }}">
+            {% else %}
+                Upload Response Screenshot
+            {% endif %}
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" class="upload-btn">
+            <input type="hidden" name="position" value="2">
+            <label class="upload-label">
+                Upload Screenshot
+                <input type="file" name="image" onchange="this.form.submit()">
+            </label>
+        </form>
+    </div>
+
+
+    <!-- RIGHT: Explanation -->
+    <div class="explanation-box">
+        <p>
+            A passenger raised a concern regarding airport services.
+        </p>
+
+        <p>
+            The team acknowledged the feedback and assured review with the concerned department.
+        </p>
+
+        <p>
+            Through timely engagement and constructive response, the sentiment was successfully converted to positive.
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}
